@@ -1,0 +1,460 @@
+{
+  "format_version": "1.18.10",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "minecraft:player",
+      "is_spawnable": false,
+      "is_summonable": false,
+      "is_experimental": false,
+      "animations": {
+        "main": "controller.animation.player.main"
+      },
+      "scripts": {
+        "animate": [
+          "main"
+        ]
+      }
+    },
+
+    "component_groups": {
+      "minecraft:add_bad_omen": {
+        "minecraft:spell_effects": {
+          "add_effects": [
+            {
+              "effect": "bad_omen",
+              "duration": 6000,
+              "visible": false,
+              "display_on_screen_animation": true
+            }
+          ]
+        },
+        "minecraft:timer": {
+          "time": [ 0.0, 0.0 ],
+          "looping": false,
+          "time_down_event": {
+            "event": "minecraft:clear_add_bad_omen",
+            "target": "self"
+          }
+        }
+      },
+      "minecraft:clear_bad_omen_spell_effect": {
+        "minecraft:spell_effects": {
+        }
+      },
+      "minecraft:raid_trigger": {
+        "minecraft:raid_trigger": {
+          "triggered_event": {
+            "event": "minecraft:remove_raid_trigger",
+            "target": "self"
+          }
+        },
+        "minecraft:spell_effects": {
+          "remove_effects": "bad_omen"
+        }
+      },
+      "minecraft:strength1": {
+
+      },
+      "minecraft:strength2": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 0,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      },
+      "minecraft:strength3": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 0,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      },
+      "minecraft:strength4": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 1,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      },
+      "minecraft:strength5": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 1,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      },
+      "minecraft:strength6": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 2,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      },
+      "minecraft:strength7": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 2,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      },
+      "minecraft:strength8": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 3,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      },
+      "minecraft:strength9": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 3,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      },
+      "minecraft:strength10": {
+        "minecraft:spell_effects": {
+          "add_effects":[
+            {
+              "effect": "health_boost",
+              "duration": 99999999,
+              "amplifier": 4,
+              "visible": false,
+              "target": "self"
+            }
+          ]
+        }
+      }
+    },
+
+    "components": {
+      "minecraft:experience_reward": {
+        "on_death": "Math.Min(query.player_level * 7, 100)"
+      },
+      "minecraft:type_family": {
+        "family": [ "player" ]
+      },
+      "minecraft:is_hidden_when_invisible": {
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:collision_box": {
+        "width": 0.6,
+        "height": 1.8
+      },
+      "minecraft:can_climb": {
+      },
+      "minecraft:movement": {
+        "value": 0.1
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:attack": {
+        "damage": 1
+      },
+      "minecraft:health": {
+        "value": 20,
+        "max": 40
+      },
+      "minecraft:player.saturation": {
+        "value": 20
+      },
+      "minecraft:player.exhaustion": {
+        "value": 0,
+        "max": 4
+      },
+      "minecraft:player.level": {
+        "value": 0,
+        "max": 24791
+      },
+      "minecraft:player.experience": {
+        "value": 0,
+        "max": 1
+      },
+      "minecraft:breathable": {
+        "total_supply": 15,
+        "suffocate_time": -1,
+        "inhale_time": 3.75,
+        "generates_bubbles": false
+      },
+      "minecraft:nameable": {
+        "always_show": true,
+        "allow_name_tag_renaming": false
+      },
+      "minecraft:physics": {
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:insomnia": {
+        "days_until_insomnia": 3
+      },
+      "minecraft:rideable": {
+        "seat_count": 2,
+        "family_types": [
+          "parrot_tame"
+        ],
+        "pull_in_entities": true,
+        "seats": [
+          {
+            "position": [ 0.4, -0.2, -0.1 ],
+            "min_rider_count": 0,
+            "max_rider_count": 0,
+            "lock_rider_rotation": 0
+          },
+          {
+            "position": [ -0.4, -0.2, -0.1 ],
+            "min_rider_count": 1,
+            "max_rider_count": 2,
+            "lock_rider_rotation": 0
+          }
+        ]
+      },
+      "minecraft:conditional_bandwidth_optimization": {
+      },
+      "minecraft:block_climber": {},
+      "minecraft:environment_sensor": {
+        "triggers": {
+          "filters": {
+            "all_of": [
+              {
+                "test": "has_mob_effect",
+                "subject": "self",
+                "value": "bad_omen"
+              },
+              {
+                "test": "is_in_village",
+                "subject": "self",
+                "value": true
+              }
+            ]
+          },
+          "event": "minecraft:trigger_raid"
+        }
+      }
+    },
+
+    "events": {
+      "minecraft:gain_bad_omen": {
+        "add": {
+          "component_groups": [
+            "minecraft:add_bad_omen"
+          ]
+        }
+      },
+      "minecraft:clear_add_bad_omen": {
+        "remove": {
+          "component_groups": [
+            "minecraft:add_bad_omen"
+          ]
+        },
+        "add": {
+          "component_groups": [
+            "minecraft:clear_bad_omen_spell_effect"
+          ]
+        }
+      },
+      "minecraft:trigger_raid": {
+        "add": {
+          "component_groups": [ "minecraft:raid_trigger" ]
+        }
+      },
+      "minecraft:remove_raid_trigger": {
+        "remove": {
+          "component_groups": [ "minecraft:raid_trigger" ]
+        }
+      },
+      "minecraft:strength1": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength1"
+          ]
+        }
+      },
+      "minecraft:strength2": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength2"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength1"
+          ]
+        }
+      },
+      "minecraft:strength3": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength3"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength2"
+          ]
+        }
+      },
+      "minecraft:strength4": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength4"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength3"
+          ]
+        }
+      },
+      "minecraft:strength5": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength5"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength4"
+          ]
+        }
+      },
+      "minecraft:strength6": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength6"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength5"
+          ]
+        }
+      },
+      "minecraft:strength7": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength7"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength6"
+          ]
+        }
+      },
+      "minecraft:strength8": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength8"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength7"
+          ]
+        }
+      },
+      "minecraft:strength9": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength9"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength8"
+          ]
+        }
+      },
+      "minecraft:strength10": {
+        "add": {
+          "component_groups": [
+            "minecraft:strength10"
+          ]
+        },
+        "remove": {
+          "component_groups": [
+            "minecraft:strength9"
+          ]
+        }
+      },
+      "minecraft:reset": {
+        "remove": {
+          "component_groups": [
+            "minecraft:strength1",
+            "minecraft:strength2",
+            "minecraft:strength3",
+            "minecraft:strength4",
+            "minecraft:strength5",
+            "minecraft:strength6",
+            "minecraft:strength7",
+            "minecraft:strength8",
+            "minecraft:strength9",
+            "minecraft:strength10"
+          ]
+        }
+      }
+    }
+  }
+}
+
+
+
+

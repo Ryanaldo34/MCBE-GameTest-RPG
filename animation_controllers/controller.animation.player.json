@@ -1,0 +1,41 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.player.main": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        { "mining": "query.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:diamond_shovel')" },
+                        { "drinking": "query.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:potion')" },
+                        { "death": "!query.is_alive" }
+                    ]
+                },
+                "mining": {
+                    "on_entry": [
+                        "/function spade"
+                    ],
+                    "transitions": [
+                        { "default": "!query.is_item_name_any('slot.weapon.mainhand', 0, 'minecraft:diamond_shovel')" }
+                    ]
+                },
+                "drinking": {
+                    "on_entry": [
+                        "/say hello"
+                    ],
+                    "transitions": [
+                        { "default": "query.item_remaining_use_duration('main_hand') == 0" }
+                    ]
+                },
+                "death": {
+                    "on_entry": [
+                        "/execute @s[tag=joined] ~~~ scoreboard players add @s player_deaths 1"
+                    ],
+                    "transitions": [
+                        {"default": "query.is_alive"}
+                    ]
+                }
+            },
+            "initial_state": "default"
+        }
+    }
+}
